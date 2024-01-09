@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import Button from '../../components/Button/Button.tsx';
+import Button from '../../components/CleanAllButton/CleanAllButton.tsx';
 import './Main.css'
+import AddButton from '../../components/AddButton/AddButton.tsx';
 
 const Main: React.FC = () => {
     const [inputValue, setinputValue] = useState("");
@@ -16,13 +17,8 @@ const Main: React.FC = () => {
         setToDoList([])
     }
 
-    const handleEdit = (index: number) => {
-
-    }
-
-    const handleDelete = (index: number) => {
-        
-    }
+    // const handleEdit = (index: number) => {}
+    // const handleDelete = (index: number) => {}
 
     return (
     <div className='container'>
@@ -54,9 +50,7 @@ const Main: React.FC = () => {
            <p className='task-length'>
                 Você tem {toDoList.length} tarefas pendentes
             </p>
-            <Button onClick={handleClear}>
-                Limpar Tudo
-            </Button>
+            <Button onClick={handleClear}></Button>
         </div>
     </div>
     )
