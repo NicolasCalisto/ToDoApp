@@ -32,7 +32,7 @@ const Main: React.FC = () => {
                 onChange={(event) => setinputValue(event.target.value)}
 
             />
-            <button onClick={handleAddClick} className='btn-add'>+</button>
+            <AddButton onClick={handleAddClick}></AddButton>
         </div>
         <div className='toDo-list'>
             <ul>
