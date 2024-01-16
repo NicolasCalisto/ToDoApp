@@ -5,7 +5,7 @@ interface Props {
     onClick: () => void
 }
 
-const Button: React.FC<Props> = ({ onClick }) => {
+export const ClearButton: React.FC<Props> = ({ onClick }) => {
     return (
         <button className="btn-cleanAll" onClick={onClick}>
             Limpar Tudo
@@ -13,5 +13,3 @@ const Button: React.FC<Props> = ({ onClick }) => {
     )
 
 }
-
-export default Button;
