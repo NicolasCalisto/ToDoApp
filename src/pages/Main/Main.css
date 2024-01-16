@@ -29,12 +29,10 @@
 .list-item {
     list-style: none;
     background-color: #d8d8d8;
-    padding: 8px;
-    border-radius: 4px;
+    padding: 4px;
     width: 90%;
-    height: 32px;
-    margin: 6px 0px 6px 0px;
-
+    height: 28px;
+    margin: 6px;
 }
 
 .task-length {
@@ -51,4 +49,48 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+}
+
+/* botoes */
+
+.item {
+    background-color: aqua;
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+    height: 32px;
+    margin: 6px 0px 6px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-complete {
+    background-color: #d8d8d8;
+    border-radius: 10px;
+    height: 32px;
+    width: 32px;
+    border: none;
+
+}
+
+.btn-edit {
+    height: 30px;
+    padding: 6px;
+    background-color: #ee7605f1;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 4px;
+    margin-right: 6px;
+}
+
+.btn-delete {
+    height: 30px;
+    padding: 6px;
+    background-color: #ee7605f1;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 4px;
+    margin-right: -6px;
 }

@@ -1,54 +1,63 @@
 import React, { useState } from 'react'
 import Button from '../../components/CleanAllButton/CleanAllButton.tsx';
 import './Main.css'
-import AddButton from '../../components/AddButton/AddButton.tsx';
+import { NewTask } from '../../componentsCRUD/newTask.tsx';
+// new task
+import { v4 as uuidv4 } from 'uuid';
+uuidv4();
+//
+
+
 
 const Main: React.FC = () => {
-    const [inputValue, setinputValue] = useState("");
-    const [toDoList, setToDoList] = useState<string[]>([]);
+    //newTask component
+    const [todos, setTodos] = useState<Array<{ id: string; task: string; completed: boolean; isEditing: boolean }>>([]);
+    // const [toDoList, setToDoList] = useState<string[]>([]);
 
-    const handleAddClick = () => {
-        setToDoList([
-            ...toDoList, inputValue
-        ])
-    };
+    const addTodo = todo => {
+        setTodos([...todos, {id: uuidv4(), task: todo, 
+            completed: false, isEditing: false}]);
+        
+        console.log(todos)
+    }
+    // 
 
     const handleClear = () => {
-        setToDoList([])
+        setTodos([])
     }
 
-    // const handleEdit = (index: number) => {}
-    // const handleDelete = (index: number) => {}
+    const handleEdit = (index) => {
+
+    }
+
+    const handleDelete = (index) => {
+        const handleAddClick = [...todos]
+        handleAddClick.splice(index, 1)
+        setTodos(handleAddClick)
+    }
 
     return (
     <div className='container'>
         <h1 className='title'>Lista de Tarefas</h1>
-        <div className='form-group'>
-            <input 
-                type="text" 
-                className='toDo-input' 
-                placeholder='Nova Tarefa'
-                value={inputValue}
-                onChange={(event) => setinputValue(event.target.value)}
-
-            />
-            <AddButton onClick={handleAddClick}></AddButton>
-        </div>
+        <NewTask addTodo={addTodo} />
         <div className='toDo-list'>
             <ul>
-                {toDoList.map((toDo) => (
+                {todos.map((todo) => (
                     <>
-                        {/* <button className='btn-complete'>feito</button> */}
-                        <li className='list-item'>{toDo}</li>
-                        {/* <button className='btn-edit'>Editar</button>
-                        <button className='btn-delete'>Deletar</button> */}
+                    <div className='item'>
+                        <input type="checkbox" className='btn-complete'/>
+                        <li className='list-item'>
+                            {todo.task}</li>  
+                        <button className='btn-edit'>Editar</button>
+                        <button className='btn-delete' onClick={handleDelete}>Deletar</button>
+                    </div>
                     </>
                 ))}
             </ul>
         </div>
         <div className='bottom'>
-           <p className='task-length'>
-                Você tem {toDoList.length} tarefas pendentes
+            <p className='task-length'>
+                Você tem {todos.length} tarefas pendentes
             </p>
             <Button onClick={handleClear}></Button>
         </div>
